@@ -1,0 +1,19 @@
+[project]
+name = "gaddiel-irakoze-rl-summative"
+version = "0.1.0"
+description = "Synthetic mission-based industrial investment reinforcement learning simulator"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "gymnasium>=1.4.0",
+    "numpy>=2.4.6",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

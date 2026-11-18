@@ -1,0 +1,4 @@
+policy,episodes,mean_reward,std_reward,median_reward,positive_reward_rate,mean_net_worth,mean_employment,mean_import_substitution,mean_invalid_actions,mean_studies,mean_pilots,mean_expansions,mean_exits
+always_hold,100,0.0,0.0,0.0,0.0,100.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+random_valid,100,-0.028303105919351673,0.06933845802004526,-0.03554839984002473,0.34,92.53595999999999,0.29008999999999996,0.22123,0.0,4.0,4.0,1.58,3.95
+rule_based,100,0.2967780721111026,0.1510782506413514,0.3137210194491013,0.96,125.12870000000001,0.36561,0.25433999999999996,0.0,3.02,1.79,1.79,0.0

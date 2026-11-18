@@ -221,3 +221,23 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+
+# ==========================================
+# Industrial Investment RL — Project Rules
+# ==========================================
+
+# Temporary backups
+*.bak
+*.tmp
+
+# Temporary evaluation runs
+logs/**/pilot/
+
+# Local environment configuration
+.env.*
+!.env.example
+
+# Local model training checkpoints (future)
+models/checkpoints/
