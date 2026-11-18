@@ -1,0 +1,40 @@
+{
+  "source": "UN Comtrade, United Nations Statistics Division — public preview API",
+  "reporter": "Rwanda (646)",
+  "partner": "World (0)",
+  "flow": "Imports (M)",
+  "classification": "HS; HS4 codes as specified in raw source rows",
+  "hs4_sector_mapping": {
+    "agro_processing": "2009",
+    "textiles": "6109",
+    "construction_materials": "2523",
+    "pharmaceuticals": "3004"
+  },
+  "raw_file": "data/raw/rwanda_hs4_imports.csv",
+  "raw_file_sha256": "5781a9ad85319618aa51c56a8c40d9c9237fb1a5df42b7272458e0fd149dc264",
+  "raw_row_count": 40,
+  "baseline_year_for_growth": 2015,
+  "historical_signal_years": [
+    2016,
+    2023
+  ],
+  "held_out_year": 2024,
+  "historical_row_count": 32,
+  "held_out_row_count": 4,
+  "normalization": {
+    "demand_score": "Clip((ln(1+value)-min_train_log)/(max_train_log-min_train_log), 0, 1)",
+    "fitted_on": "All four HS4 sector observations from 2016 through 2023; excludes held-out year",
+    "minimum_log_imports": 14.46279210349753,
+    "maximum_log_imports": 18.321428600146977,
+    "constant_range_fallback": 0.5,
+    "growth_signal": "Clip(0.5 + 0.25*((value_t-value_t-1)/value_t-1), 0, 1)"
+  },
+  "created_at_utc": "2026-11-18T20:32:14.746910+00:00",
+  "limitations": [
+    "HS4 import value is a proxy for import market size, not domestic investment viability.",
+    "World-partner totals do not measure supplier concentration.",
+    "No observed employment or firm-level financial profitability is inferred.",
+    "The processed data is not yet wired into the current synthetic RL environment.",
+    "Check classification consistency, is_reported flags, and revisions before publication."
+  ]
+}

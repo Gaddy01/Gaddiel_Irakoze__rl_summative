@@ -1,0 +1,423 @@
+{
+  "episodes_per_run": 1000,
+  "eval_episodes_per_run": 100,
+  "train_seed": 42,
+  "validation_seed_range": [
+    50000,
+    50099
+  ],
+  "env_mode": "historical",
+  "runs": [
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_01",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "batch_size": 32,
+      "replay_size": 5000,
+      "target_update": 100,
+      "eps_decay_steps": 16000,
+      "warmup": 250
+    },
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_02",
+      "lr": 0.0002,
+      "gamma": 0.98,
+      "hidden": 64,
+      "batch_size": 32,
+      "replay_size": 5000,
+      "target_update": 100,
+      "eps_decay_steps": 16000,
+      "warmup": 250
+    },
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_03",
+      "lr": 0.001,
+      "gamma": 0.98,
+      "hidden": 64,
+      "batch_size": 32,
+      "replay_size": 5000,
+      "target_update": 100,
+      "eps_decay_steps": 16000,
+      "warmup": 250
+    },
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_04",
+      "lr": 0.0005,
+      "gamma": 0.95,
+      "hidden": 64,
+      "batch_size": 32,
+      "replay_size": 5000,
+      "target_update": 100,
+      "eps_decay_steps": 16000,
+      "warmup": 250
+    },
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_05",
+      "lr": 0.0005,
+      "gamma": 0.995,
+      "hidden": 64,
+      "batch_size": 32,
+      "replay_size": 5000,
+      "target_update": 100,
+      "eps_decay_steps": 16000,
+      "warmup": 250
+    },
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_06",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 128,
+      "batch_size": 32,
+      "replay_size": 5000,
+      "target_update": 100,
+      "eps_decay_steps": 16000,
+      "warmup": 250
+    },
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_07",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "batch_size": 64,
+      "replay_size": 10000,
+      "target_update": 100,
+      "eps_decay_steps": 16000,
+      "warmup": 250
+    },
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_08",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "batch_size": 32,
+      "replay_size": 5000,
+      "target_update": 250,
+      "eps_decay_steps": 16000,
+      "warmup": 250
+    },
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_09",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "batch_size": 32,
+      "replay_size": 5000,
+      "target_update": 100,
+      "eps_decay_steps": 8000,
+      "warmup": 250
+    },
+    {
+      "algorithm": "dqn",
+      "run_id": "dqn_10",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "batch_size": 32,
+      "replay_size": 5000,
+      "target_update": 100,
+      "eps_decay_steps": 20000,
+      "warmup": 250,
+      "eps_end": 0.1
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_01",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_02",
+      "lr": 0.0001,
+      "gamma": 0.98,
+      "hidden": 64,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_03",
+      "lr": 0.001,
+      "gamma": 0.98,
+      "hidden": 64,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_04",
+      "lr": 0.0005,
+      "gamma": 0.95,
+      "hidden": 64,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_05",
+      "lr": 0.0005,
+      "gamma": 0.995,
+      "hidden": 64,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_06",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 128,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_07",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 32,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_08",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "entropy_coeff": 0.0
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_09",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "entropy_coeff": 0.05
+    },
+    {
+      "algorithm": "reinforce",
+      "run_id": "reinforce_10",
+      "lr": 0.0002,
+      "gamma": 0.95,
+      "hidden": 128,
+      "entropy_coeff": 0.03
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_01",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "clip_epsilon": 0.2,
+      "update_epochs": 4,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_02",
+      "lr": 0.0002,
+      "gamma": 0.98,
+      "hidden": 64,
+      "clip_epsilon": 0.2,
+      "update_epochs": 4,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_03",
+      "lr": 0.001,
+      "gamma": 0.98,
+      "hidden": 64,
+      "clip_epsilon": 0.2,
+      "update_epochs": 4,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_04",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "clip_epsilon": 0.1,
+      "update_epochs": 4,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_05",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "clip_epsilon": 0.3,
+      "update_epochs": 4,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_06",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "clip_epsilon": 0.2,
+      "update_epochs": 2,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_07",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "clip_epsilon": 0.2,
+      "update_epochs": 8,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_08",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "clip_epsilon": 0.2,
+      "update_epochs": 4,
+      "gae_lambda": 0.9,
+      "entropy_coeff": 0.01
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_09",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "clip_epsilon": 0.2,
+      "update_epochs": 4,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.05
+    },
+    {
+      "algorithm": "ppo",
+      "run_id": "ppo_10",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 128,
+      "clip_epsilon": 0.2,
+      "update_epochs": 4,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.0
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_01",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01,
+      "value_coeff": 0.5
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_02",
+      "lr": 0.0002,
+      "gamma": 0.98,
+      "hidden": 64,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01,
+      "value_coeff": 0.5
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_03",
+      "lr": 0.001,
+      "gamma": 0.98,
+      "hidden": 64,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01,
+      "value_coeff": 0.5
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_04",
+      "lr": 0.0005,
+      "gamma": 0.95,
+      "hidden": 64,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01,
+      "value_coeff": 0.5
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_05",
+      "lr": 0.0005,
+      "gamma": 0.995,
+      "hidden": 64,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01,
+      "value_coeff": 0.5
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_06",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "gae_lambda": 0.9,
+      "entropy_coeff": 0.01,
+      "value_coeff": 0.5
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_07",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "gae_lambda": 1.0,
+      "entropy_coeff": 0.01,
+      "value_coeff": 0.5
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_08",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.05,
+      "value_coeff": 0.5
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_09",
+      "lr": 0.0005,
+      "gamma": 0.98,
+      "hidden": 64,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.01,
+      "value_coeff": 1.0
+    },
+    {
+      "algorithm": "a2c",
+      "run_id": "a2c_10",
+      "lr": 0.0002,
+      "gamma": 0.98,
+      "hidden": 128,
+      "gae_lambda": 0.95,
+      "entropy_coeff": 0.0,
+      "value_coeff": 0.25
+    }
+  ]
+}

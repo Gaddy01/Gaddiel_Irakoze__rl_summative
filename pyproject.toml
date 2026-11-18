@@ -7,6 +7,9 @@ requires-python = ">=3.11"
 dependencies = [
     "gymnasium>=1.4.0",
     "numpy>=2.4.6",
+    "tensordict>=0.15.6",
+    "torch>=2.15.0",
+    "torchrl>=0.15.0",
 ]
 
 [dependency-groups]
