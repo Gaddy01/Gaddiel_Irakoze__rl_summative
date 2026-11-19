@@ -33,8 +33,11 @@ class IndustrialTorchRLEnv(EnvBase):
         )
         self.action_spec = Categorical(n=ACTION_DIM, dtype=torch.int64)
         self.reward_spec = Unbounded(shape=(1,), dtype=torch.float32)
-        # EnvBase supplies standard done and terminated specs automatically.
-        # Keep truncated as a separate field for transparent Gymnasium semantics.
+        self.full_done_spec = Composite(
+            done=Binary(1, shape=(1,), dtype=torch.bool),
+            terminated=Binary(1, shape=(1,), dtype=torch.bool),
+            truncated=Binary(1, shape=(1,), dtype=torch.bool),
+        )
 
     def _set_seed(self, seed: int | None) -> int | None:
         self._episode_seed = None if seed is None else int(seed)
@@ -65,8 +68,8 @@ class IndustrialTorchRLEnv(EnvBase):
 
     def _step(self, tensordict: TensorDict) -> TensorDict:
         action = int(tensordict["action"].item())
-        if not bool(self.backend.valid_action_mask()[action]):
-            raise AssertionError("An RL policy attempted an unavailable investment action")
+        # Preserve the Gymnasium simulator: invalid actions receive its original
+        # penalty. Learned policies separately enforce the legal-action mask.
         obs, reward, terminated, truncated, info = self.backend.step(action)
         values = self._state(obs, info)
         done = bool(terminated or truncated)

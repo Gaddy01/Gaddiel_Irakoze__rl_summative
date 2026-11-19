@@ -42,6 +42,7 @@ def make_onpolicy_loss(cfg, actor, critic):
             actor_network=actor,
             critic_network=critic,
             loss_critic_type="l2",
+            functional=False,
         )
     if cfg.algorithm == "ppo":
         return ClipPPOLoss(
@@ -52,6 +53,7 @@ def make_onpolicy_loss(cfg, actor, critic):
             entropy_coeff=cfg.entropy_coeff,
             critic_coeff=cfg.value_coeff,
             loss_critic_type="l2",
+            functional=False,
         )
     if cfg.algorithm == "a2c":
         return A2CLoss(
@@ -61,6 +63,7 @@ def make_onpolicy_loss(cfg, actor, critic):
             entropy_coeff=cfg.entropy_coeff,
             critic_coeff=cfg.value_coeff,
             loss_critic_type="l2",
+            functional=False,
         )
     raise ValueError(f"Not an on-policy algorithm: {cfg.algorithm}")
 
