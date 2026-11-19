@@ -108,3 +108,26 @@ employment, or industrial transformation.
 
 The summative also requires an advanced visualization, 7–10-page report
 and recorded demo. Those are separate deliverables still to complete.
+
+
+## Interactive 3D PPO mission demonstration
+
+Run the industrial visualization, including the already trained PPO 03
+checkpoint and a synchronized Rule-Based benchmark:
+
+    uv sync --frozen
+    uv run python play.py --open
+
+Open http://127.0.0.1:8765, then use STEP or PLAY to navigate all 24
+months. The browser renders four Three.js industrial districts, dynamic
+project stages, cumulative rewards, investment metrics and a comparison
+against the heuristic. The Python terminal prints each policy's actual
+monthly decisions and reward contributions.
+
+No frontend build is necessary. Internet access is required for the
+Three.js CDN on the first browser visit. The original checkpoint is
+loaded from models/ppo/ppo_03.pt and is never retrained.
+
+See visualization/README.md for controls, validation, and the five-minute
+video filming checklist. Real-world import proxies supply economic
+starting conditions, while all simulated investment outcomes are synthetic.
