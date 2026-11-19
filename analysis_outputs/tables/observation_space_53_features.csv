@@ -1,0 +1,54 @@
+index,observation,encoding,range,source_and_update_note,exact_meaning_and_update_rule
+0,month_fraction,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+1,available_capital_scaled,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+2,committed_capital_scaled,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+3,employment_index,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+4,import_substitution_index,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+5,agro_processing.demand_score,float32; normalized,"[0,1]",UN Comtrade HS4 at reset; synthetic monthly dynamics thereafter,REVIEW environment/observations.py
+6,agro_processing.growth_signal,float32; normalized,"[0,1]",UN Comtrade HS4 at reset; synthetic monthly dynamics thereafter,REVIEW environment/observations.py
+7,agro_processing.supplier_concentration,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+8,agro_processing.feasibility_estimate,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+9,agro_processing.uncertainty,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+10,agro_processing.investment_scaled,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+11,agro_processing.project_progress,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+12,agro_processing.stage_unstudied,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+13,agro_processing.stage_studied,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+14,agro_processing.stage_pilot,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+15,agro_processing.stage_operating,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+16,agro_processing.stage_exited,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+17,textiles.demand_score,float32; normalized,"[0,1]",UN Comtrade HS4 at reset; synthetic monthly dynamics thereafter,REVIEW environment/observations.py
+18,textiles.growth_signal,float32; normalized,"[0,1]",UN Comtrade HS4 at reset; synthetic monthly dynamics thereafter,REVIEW environment/observations.py
+19,textiles.supplier_concentration,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+20,textiles.feasibility_estimate,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+21,textiles.uncertainty,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+22,textiles.investment_scaled,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+23,textiles.project_progress,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+24,textiles.stage_unstudied,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+25,textiles.stage_studied,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+26,textiles.stage_pilot,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+27,textiles.stage_operating,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+28,textiles.stage_exited,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+29,construction_materials.demand_score,float32; normalized,"[0,1]",UN Comtrade HS4 at reset; synthetic monthly dynamics thereafter,REVIEW environment/observations.py
+30,construction_materials.growth_signal,float32; normalized,"[0,1]",UN Comtrade HS4 at reset; synthetic monthly dynamics thereafter,REVIEW environment/observations.py
+31,construction_materials.supplier_concentration,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+32,construction_materials.feasibility_estimate,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+33,construction_materials.uncertainty,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+34,construction_materials.investment_scaled,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+35,construction_materials.project_progress,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+36,construction_materials.stage_unstudied,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+37,construction_materials.stage_studied,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+38,construction_materials.stage_pilot,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+39,construction_materials.stage_operating,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+40,construction_materials.stage_exited,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+41,pharmaceuticals.demand_score,float32; normalized,"[0,1]",UN Comtrade HS4 at reset; synthetic monthly dynamics thereafter,REVIEW environment/observations.py
+42,pharmaceuticals.growth_signal,float32; normalized,"[0,1]",UN Comtrade HS4 at reset; synthetic monthly dynamics thereafter,REVIEW environment/observations.py
+43,pharmaceuticals.supplier_concentration,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+44,pharmaceuticals.feasibility_estimate,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+45,pharmaceuticals.uncertainty,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+46,pharmaceuticals.investment_scaled,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+47,pharmaceuticals.project_progress,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+48,pharmaceuticals.stage_unstudied,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+49,pharmaceuticals.stage_studied,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+50,pharmaceuticals.stage_pilot,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+51,pharmaceuticals.stage_operating,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py
+52,pharmaceuticals.stage_exited,float32; normalized,"[0,1]",Simulator state / synthetic transition / derived feature,REVIEW environment/observations.py

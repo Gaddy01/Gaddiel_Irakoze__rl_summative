@@ -1,0 +1,17 @@
+algorithm,sector,sector_label,decisions
+dqn,agro_processing,Agro-processing (juice),3
+dqn,textiles,Textiles (T-shirts),161
+dqn,construction_materials,Construction (cement),306
+dqn,pharmaceuticals,Pharmaceuticals (medicaments),300
+reinforce,agro_processing,Agro-processing (juice),0
+reinforce,textiles,Textiles (T-shirts),0
+reinforce,construction_materials,Construction (cement),300
+reinforce,pharmaceuticals,Pharmaceuticals (medicaments),300
+ppo,agro_processing,Agro-processing (juice),0
+ppo,textiles,Textiles (T-shirts),298
+ppo,construction_materials,Construction (cement),300
+ppo,pharmaceuticals,Pharmaceuticals (medicaments),300
+a2c,agro_processing,Agro-processing (juice),0
+a2c,textiles,Textiles (T-shirts),0
+a2c,construction_materials,Construction (cement),300
+a2c,pharmaceuticals,Pharmaceuticals (medicaments),300

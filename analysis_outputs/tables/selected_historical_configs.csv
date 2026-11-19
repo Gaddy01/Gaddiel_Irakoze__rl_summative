@@ -1,0 +1,5 @@
+algorithm,run_id,validation_mean_reward,validation_std_reward,validation_stochastic_mean_reward,last_100_train_mean,lr,gamma,hidden,batch_size,replay_size,target_update,eps_decay_steps,warmup,eps_end,rollout_episodes,entropy_coeff,clip_epsilon,update_epochs,gae_lambda,value_coeff
+dqn,dqn_09,0.3524480944871902,0.1052992294126739,,0.24218823917326518,0.0005,0.98,64,32.0,5000.0,100.0,8000.0,250.0,,,,,,,
+reinforce,reinforce_03,0.33930628836154936,0.1062473725657139,0.2830975539237261,0.2620542967133224,0.001,0.98,64,,,,,,,8.0,0.01,,,,
+ppo,ppo_03,0.36657307371497155,0.11723076925568537,0.36691587522625924,0.35476215280592444,0.001,0.98,64,,,,,,,8.0,0.01,0.2,4.0,0.95,
+a2c,a2c_01,0.33930628836154936,0.1062473725657139,0.3166699082404375,0.2965852634236217,0.0005,0.98,64,,,,,,,8.0,0.01,,,0.95,0.5

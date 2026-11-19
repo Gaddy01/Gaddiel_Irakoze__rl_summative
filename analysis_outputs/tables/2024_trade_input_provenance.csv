@@ -1,0 +1,5 @@
+sector,hs4_code,signal_year,import_value_usd,import_growth_yoy,demand_score,growth_signal,demand_outside_training_range,source_is_reported,source
+agro_processing,2009,2024,8554377.71,-0.01243,0.388521,0.496892,False,False,UN Comtrade public preview API (Rwanda imports from World)
+textiles,6109,2024,4311009.08,0.125634,0.210927,0.531408,False,False,UN Comtrade public preview API (Rwanda imports from World)
+construction_materials,2523,2024,91717979.67,0.376502,1.0,0.594126,True,False,UN Comtrade public preview API (Rwanda imports from World)
+pharmaceuticals,3004,2024,79151869.99,-0.12589,0.96513,0.468527,False,False,UN Comtrade public preview API (Rwanda imports from World)

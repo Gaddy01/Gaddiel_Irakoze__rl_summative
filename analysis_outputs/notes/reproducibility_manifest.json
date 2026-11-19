@@ -1,0 +1,40 @@
+{
+  "generated_at_utc": "2026-11-19T14:35:56.123259+00:00",
+  "repository_root": "D:\\Alu docs\\BSE Courses\\ML Techniques II\\Summative\\Gaddiel_Irakoze__rl_summative",
+  "git_head": "740807ceb94cc424b05c4474acd21420629e6519",
+  "training_runs": 40,
+  "training_episodes": 40000,
+  "training_steps": 960000,
+  "heldout_simulation_seeds": [
+    60000,
+    60099
+  ],
+  "holdout_real_years": [
+    2024
+  ],
+  "selected_model_ids": {
+    "dqn": "dqn_09",
+    "reinforce": "reinforce_03",
+    "ppo": "ppo_03",
+    "a2c": "a2c_01"
+  },
+  "detailed_replay_completed": true,
+  "figure_count": 15,
+  "source_files_sha256": {
+    "logs\\training\\sweep_summary.csv": "65f3c1b7f10dcc4969632c7c1bcf336346dcb21dcfa2f4ab1b9a736c959db3f9",
+    "logs\\training\\final_2024_evaluation.csv": "3b7ef0d530e94bda4f29cb4078fc5aef99a8b3d3df8a2cde2a9790ea0bcaf0a4",
+    "data\\processed\\sector_signals_2024_holdout.csv": "19995e48318e103e2e39cd8148ecb6d0f567c44c122a5db00b09b2a1f86dc6e0"
+  },
+  "versions": {
+    "python": "3.11.5",
+    "numpy": "2.4.6",
+    "pandas": "3.1.1",
+    "scipy": "1.17.1"
+  },
+  "limitations": [
+    "One fixed training seed for each run",
+    "2024 is one real trade-signal year and 100 synthetic scenarios",
+    "Reward and portfolio statistics are simulated, not realized",
+    "No hyperparameter tuning or selection on the 2024 holdout"
+  ]
+}
