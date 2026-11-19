@@ -21,7 +21,7 @@ ProbabilisticActor/QValueActor, TensorDict rollouts, and TorchRL replay.
   2016–2023 development; 2024 holdout).
 - Investment outcomes and dynamic market conditions are synthetic.
 - Initial 40-run hybrid implementation, logs and checkpoints are
-  archived at the [rl-sweep-v1-40runs tag](../../tags/rl-sweep-v1-40runs).
+  archived at the [rl-sweep-v1-40runs tag](https://github.com/Gaddy01/Gaddiel_Irakoze__rl_summative/tree/rl-sweep-v1-40runs).
   Those earlier models are incompatible with the active trainer.
 
 **The native TorchRL implementation must pass local integration tests before

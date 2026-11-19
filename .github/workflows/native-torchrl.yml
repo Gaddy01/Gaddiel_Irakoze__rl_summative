@@ -2,7 +2,7 @@ name: Native TorchRL checks
 
 on:
   push:
-    branches: [main, native-torchrl-verification]
+    branches: [main]
   workflow_dispatch:
 
 jobs:

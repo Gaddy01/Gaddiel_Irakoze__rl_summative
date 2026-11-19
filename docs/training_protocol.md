@@ -72,7 +72,7 @@ the registered settings causes a hard error; do not tune on the 2024 data.
 Tied validation scores are broken by lexicographic run ID.
 
 Every run saves actor and critic weights (where applicable) to
-models/<algorithm>/<run_id>.pt, and episode.csv + summary.json in
+models/<algorithm>/<run_id>.pt, and episodes.csv + summary.json in
 logs/training/<algorithm>/<run_id>/. Brief smoke tests write to separate
 models/smoke and logs/smoke paths. These do not count toward the 40 runs.
 
