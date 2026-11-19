@@ -1,75 +1,110 @@
 # Intelligent Industrial Investment Decision Simulator
 
-A **mission-based reinforcement learning environment** exploring sequential industrial investment decisions in a *synthetic* Rwandan economy. The investor can conduct studies, fund pilot projects, expand, hold capital, and sell investments. Rewards combine financial net-worth changes, modeled employment and import-substitution outcomes, and risk exposure.
+**African Leadership University — Machine Learning Techniques II Summative**
 
-**Current stage (November 2026):** Gymnasium environment **Version 2**, five baseline/stress evaluation policies, and 65 local passing tests. The four required TorchRL algorithms (DQN, REINFORCE, PPO, A2C), real HS4 data integration, advanced graphical simulation, final report, and video **are not yet implemented**. All current economic input values are synthetic, *not Rwanda investment statistics*.
+A mission-based reinforcement learning simulator investigating industrial
+investment decisions in a *synthetic Rwanda-inspired economy*. The agent
+may hold capital, conduct feasibility studies, fund pilots, expand, and
+sell investments in four product groups. Rewards combine hypothetical
+net-worth changes, modeled employment, import substitution, and risk.
 
-## Quick start
+## Framework and current state
 
-Install [uv](https://docs.astral.sh/uv/), then run these commands in the repository root:
+The active training code uses **native TorchRL**:
+DQNLoss, ReinforceLoss, ClipPPOLoss, A2CLoss, GAE, action-masked
+ProbabilisticActor/QValueActor, TensorDict rollouts, and TorchRL replay.
 
-    uv sync
-    uv run main.py
-    uv run pytest -v
+- Observation: 53 normalized float32 features.
+- Action: 17 discrete options, including Hold.
+- Episode: exactly 24 monthly decisions.
+- Source data: UN Comtrade HS4 Rwanda import proxies (2015 baseline;
+  2016–2023 development; 2024 holdout).
+- Investment outcomes and dynamic market conditions are synthetic.
+- Initial 40-run hybrid implementation, logs and checkpoints are
+  archived at the [rl-sweep-v1-40runs tag](../../tags/rl-sweep-v1-40runs).
+  Those earlier models are incompatible with the active trainer.
 
-The default main.py launches a deterministic **24-month scripted demonstration**, not a trained RL agent or graphical UI. To view the 17 investment actions instead:
+**The native TorchRL implementation must pass local integration tests before
+the 40 new configurations are executed.** A successful static review or
+Git commit is not sufficient to establish that the complete training
+pipeline works on your machine.
 
-    uv run main.py --catalog
+## Set up and verify
 
-Other previews:
+Install [uv](https://docs.astral.sh/uv/). From the repository root:
 
-    uv run python -m scripts.preview_observations
-    uv run python -m scripts.preview_rewards
-    uv run python -m scripts.preview_environment
+```powershell
+uv sync
+uv run python -m pytest -v
+uv run python -m training.smoke_torchrl
+uv run main.py
+```
 
-The original development run reported 65 passing automated tests and a successful Gymnasium checker. Re-run the tests in your own checkout; hosted CI is not yet configured.
+The smoke check performs brief **actual TorchRL training and checkpoint
+saving for every algorithm**. If it fails, stop and fix the error before
+committing to the large sweep.
 
-## Environment at a glance
+## Fixed, resumable experiment runs
 
-| Setting | Version 2 |
-|---|---|
-| Sector labels | Agro-processing, textiles, construction materials, pharmaceuticals (provisional) |
-| Action space | 17 discrete actions |
-| Observation space | 53 normalized float32 features |
-| Initial capital | 100 hypothetical monetary units |
-| Episode horizon | 24 monthly decisions |
-| Objective | Financial performance + modeled productive development − risk/invalid-action penalties |
-| Exit semantics | Investor sells the asset; an established business can continue producing under new ownership |
+Inspect the 40 unique hyperparameter combinations:
 
-The **authoritative** and fully consolidated specification is [docs/environment_design.md](docs/environment_design.md). It describes observations, transitions, reward weights, post-exit economic continuity, experimental limitations, and references to the Version 2 logs.
+```powershell
+uv run python -m training.run_sweep --dry-run
+```
 
-## Reproduce evaluation
+Train each algorithm separately (ten configurations each):
 
-Three baseline strategies (Hold, Random Valid, Rule-Based), 100 episodes each:
+```powershell
+uv run python -m training.run_sweep --algorithm dqn
+uv run python -m training.run_sweep --algorithm reinforce
+uv run python -m training.run_sweep --algorithm ppo
+uv run python -m training.run_sweep --algorithm a2c
+```
 
-    uv run python -m scripts.evaluate_baselines --episodes 100 --seed 1000 --output-dir logs/reproduced_baselines
+Or execute all configurations, skipping completed ones:
 
-Five strategies under baseline and synthetic downturn conditions, 100 episodes per combination:
+```powershell
+uv run python -m training.run_sweep
+```
 
-    uv run python -m scripts.evaluate_stress --episodes 100 --seed 1000 --output-dir logs/reproduced_stress
+The protocol is frozen at 1,000 episodes (24,000 interactions) and
+100 historical validation episodes per configuration. Outputs go to
+models/<algorithm>/ and logs/training/<algorithm>/. The best model is
+chosen by historical greedy validation only.
 
-Use new output folders to avoid overwriting historical results. The stress script produces episodes.csv, summary.csv, and reward_sensitivity.csv. Reweighted scores are **fixed-trajectory sensitivity checks**, not retrained policies.
+After all 40 runs have finished, use **2024 once**:
 
-**Reference Version 2** results: [logs/activity81/full/summary.csv](logs/activity81/full/summary.csv). In the baseline scenario, Rule-Based averaged +0.2971 cumulative reward and 125.13 end net worth. In the synthetic downturn, Risk-Aware averaged −0.0672 reward and 92.59 end net worth; Always Hold preserved 100. These are outcomes of the *assumed simulator*, not financial forecasts.
+```powershell
+uv run python -m training.evaluate_final
+```
 
-## Repository structure
+This script evaluates four chosen policies and matched baselines with
+2024 trade signals initializing NEW synthetic 24-month episodes. These
+are not actual 2024 firm-level investment results.
 
-| Directory or file | Purpose |
-|---|---|
-| environment/ | Gymnasium environment, actions, 53-feature observations, reward function |
-| evaluation/ | Benchmark policies and synthetic stress scenarios |
-| scripts/ | Runnable previews and evaluation scripts |
-| tests/ | 65 automated tests covering actions, observations, rewards, transitions, policies and stress behavior |
-| logs/baselines/ | Original historical baseline |
-| logs/activity8/full/ | Historical Version 1 stress results |
-| logs/activity81/full/ | Corrected Version 2 results |
-| docs/environment_design.md | Current technical specification |
-| pyproject.toml, uv.lock | Dependency specification and pinned lockfile |
+## Directory guide
 
-## Scientific scope and next steps
+- environment/actions.py, custom_env.py, observations.py, rewards.py:
+  unchanged Gymnasium simulator.
+- environment/trade_env.py: historical/holdout economic signals.
+- environment/torchrl_adapter.py: TorchRL EnvBase, full mask and specs.
+- training/networks.py: TorchRL Q actor, masked stochastic actor, critic.
+- training/dqn_training.py: native DQNLoss and replay.
+- training/pg_training.py: native ReinforceLoss / ClipPPOLoss / A2CLoss.
+- training/experiment.py: one-model CLI, evaluation, checkpoint I/O.
+- training/run_sweep.py: 40 pre-registered fixed-budget configurations.
+- training/evaluate_final.py: one-time held-out generalization test.
+- training/smoke_torchrl.py and tests/: correctness gates.
+- docs/environment_design.md: environment and reward definitions.
+- docs/training_protocol.md: detailed scientific training methodology.
 
-The four sector categories are provisional; **specific HS4 products and actual public trade indicators are not yet included**. Hidden feasibility and investment returns are simulated. Same-seed policies begin with comparable conditions, but action-dependent random draws may change subsequent market shocks. The 53-feature observation is partly observable, not a claim of perfect information.
+## Economic-data integrity
 
-Still required: public economic-data provenance and integration; four TorchRL agents; **at least 10 meaningful hyperparameter runs per algorithm**; reward/loss/entropy and generalization analysis; advanced visual replay; a 7–10-page report; and demonstration video. All four trained algorithms must use an identical frozen environment and evaluation protocol.
+The UN Comtrade preview values are **not proof of directly reported
+Rwanda records**: their source flags currently say is_reported=False
+and the HS classification editions vary by year. HS4 imports are demand
+proxies, not measurements of actual domestic project viability, returns,
+employment, or industrial transformation.
 
-This is an academic simulation, not investment advice.
+The summative also requires an advanced visualization, 7–10-page report
+and recorded demo. Those are separate deliverables still to complete.

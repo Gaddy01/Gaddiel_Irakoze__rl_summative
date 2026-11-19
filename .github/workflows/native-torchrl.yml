@@ -1,0 +1,22 @@
+name: Native TorchRL checks
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Install locked dependencies
+        run: uv sync --frozen
+      - name: Run automated checks
+        run: uv run python -m pytest -v
+      - name: Run four native TorchRL mini-training jobs
+        run: uv run python -m training.smoke_torchrl
