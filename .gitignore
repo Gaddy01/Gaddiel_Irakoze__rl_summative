@@ -241,3 +241,9 @@ logs/**/pilot/
 
 # Local model training checkpoints (future)
 models/checkpoints/
+
+# smoke logs
+logs/smoke/
+
+# smoke models
+models/smoke/
