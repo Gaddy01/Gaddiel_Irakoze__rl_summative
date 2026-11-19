@@ -1,0 +1,24 @@
+name: Interactive visualization integration
+
+on:
+  push:
+    branches: [main, visualization-verification]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - name: Install locked Python dependencies
+        run: uv sync --frozen
+      - name: Test visualization API and exact PPO checkpoint replay
+        run: uv run python -m pytest tests/test_visualization.py -v
+      - name: Validate JavaScript syntax
+        run: |
+          node --check visualization/static/app.js
+          node --check visualization/static/world.js
