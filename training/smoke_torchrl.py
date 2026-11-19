@@ -15,7 +15,7 @@ import torchrl
 from torchrl.envs.utils import ExplorationType, set_exploration_type
 
 from environment.torchrl_adapter import HORIZON, IndustrialTorchRLEnv
-from training.experiment import Config, train
+from training.experiment import Config, train, evaluate_model
 from training.networks import make_policy, make_q_actor
 
 
@@ -67,7 +67,21 @@ def main():
             raise FloatingPointError(f"{algorithm}: nonfinite validation reward")
         if not Path(result["model"]).is_file():
             raise FileNotFoundError(result["model"])
-        print(f"{algorithm.upper()}: native loss -> optimizer -> save -> evaluate PASSED")
+        checkpoint = torch.load(result["model"], map_location="cpu", weights_only=True)
+        reload_env = IndustrialTorchRLEnv(split="historical")
+        try:
+            reloaded = (
+                make_q_actor(32, reload_env.action_spec)
+                if algorithm == "dqn"
+                else make_policy(32, reload_env.action_spec)
+            )
+        finally:
+            reload_env.close()
+        reloaded.load_state_dict(checkpoint["actor_state"])
+        recheck = evaluate_model(reloaded, algorithm, episodes=4, seed=50_000)
+        if abs(recheck["mean_reward"] - result["validation_mean_reward"]) > 1e-6:
+            raise AssertionError(f"{algorithm}: reloaded checkpoint changed greedy validation")
+        print(f"{algorithm.upper()}: native loss -> optimizer -> save -> reload -> evaluate PASSED")
     print("ALL NATIVE TORCHRL PREFLIGHT CHECKS PASSED")
     print("Only now start the fixed 1000-episode sweeps.")
 

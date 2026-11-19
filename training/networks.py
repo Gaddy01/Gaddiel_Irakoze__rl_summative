@@ -18,10 +18,24 @@ def mlp(out_features: int, hidden: int) -> nn.Module:
     )
 
 
+class MaskedQNetwork(nn.Module):
+    """Mask invalid Q-values before both action selection AND Bellman targets.
+
+    Native DQNLoss can therefore never bootstrap through an invalid action.
+    """
+    def __init__(self, hidden: int):
+        super().__init__()
+        self.model = mlp(ACTION_DIM, hidden)
+
+    def forward(self, observation, action_mask):
+        q = self.model(observation)
+        return q.masked_fill(~action_mask.bool(), -1e9)
+
+
 def make_q_actor(hidden: int, action_spec) -> QValueActor:
     q = TensorDictModule(
-        mlp(ACTION_DIM, hidden),
-        in_keys=["observation"],
+        MaskedQNetwork(hidden),
+        in_keys=["observation", "action_mask"],
         out_keys=["action_value"],
     )
     return QValueActor(

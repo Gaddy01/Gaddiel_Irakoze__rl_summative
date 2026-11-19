@@ -120,3 +120,19 @@ def test_native_policy_gradient_loss_and_gradients(algorithm):
     loss.backward()
     grads = [p.grad for p in objective.parameters() if p.requires_grad]
     assert any(g is not None and torch.isfinite(g).all() and g.abs().sum() > 0 for g in grads), algorithm
+
+
+def test_invalid_q_values_are_masked_before_target_backup():
+    env = IndustrialTorchRLEnv(split="historical")
+    try:
+        td = env.reset()
+        actor = make_q_actor(32, env.action_spec)
+        with torch.no_grad():
+            result = actor(td)
+        values = result["action_value"]
+        mask = result["action_mask"]
+        assert (~mask).any(), "The initial state must contain illegal actions"
+        assert torch.all(values[~mask] < -1e8)
+        assert torch.isfinite(values[mask]).all()
+    finally:
+        env.close()
